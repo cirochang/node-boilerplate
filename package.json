@@ -1,0 +1,41 @@
+{
+  "name": "foo-bar",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "axios": "^0.18.0",
+    "body-parser": "^1.18.3",
+    "dotenv": "^6.1.0",
+    "express": "^4.16.4",
+    "joi": "^14.0.1",
+    "winston": "^3.1.0",
+    "winston-daily-rotate-file": "^3.3.5"
+  },
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "chai-http": "^4.2.0",
+    "eslint": "^5.7.0",
+    "eslint-config-airbnb": "^17.1.0",
+    "eslint-config-airbnb-base": "^13.1.0",
+    "eslint-plugin-import": "^2.14.0",
+    "eslint-plugin-jsx-a11y": "^6.1.2",
+    "eslint-plugin-react": "^7.11.1",
+    "mocha": "^5.2.0",
+    "nodemon": "^1.18.4",
+    "sinon": "^7.1.0"
+  },
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js",
+    "foobar": "node scripts/fooscript.js",
+    "test-unit": "NODE_ENV=test mocha tests/units/* --exit",
+    "test-e2e": "NODE_ENV=test BYPASS=true mocha tests/e2e/* --timeout 60000 --exit",
+    "test-lint": "eslint ."
+  },
+  "repository": {
+    "type": "git"
+  },
+  "author": "Ciro Chang",
+  "license": "ISC"
+}
