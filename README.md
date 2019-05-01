@@ -1,6 +1,6 @@
-# Foo Bar
+# Node boilerplate
 
-> Foo Bar description
+> Simple node boilerplate create by Ciro Chang
 
 ## Endpoints
 You can check the endpoints of the API coping and pasting the [swagger.yml](docs/swagger.yml) file in the [editor.swagger.io](https://editor.swagger.io). Or run the API and access the endpoint `/api-docs`.
@@ -8,7 +8,6 @@ You can check the endpoints of the API coping and pasting the [swagger.yml](docs
 ## Requirements
 
 - node 8.11.4
-- elasticsearch 6.4.2 (with audience metadatas)
 
 ## Running in local
 ``` bash
