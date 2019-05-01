@@ -6,15 +6,15 @@ const auth = require('../controllers/auth');
 const fooController = require('../controllers/foocontroller');
 const logger = require('../utils/logger');
 
-const validateQuery = queryKeys => (req, res, next) => {
-  const querySchema = Joi.object().keys(queryKeys);
-  const { value, error } = Joi.validate(req.query, querySchema, { allowUnknown: true });
-  req.query = value;
+const validate = (type, params) => (req, res, next) => {
+  const schema = Joi.object().keys(params);
+  const { value, error } = Joi.validate(req[type], schema, { allowUnknown: true });
+  req[type] = value;
   return error ? res.status(422).send({ error }) : next();
 };
 
 // Use to catch errors from async functions
-const asyncMiddleware = fn => (req, res, next) => {
+const errorHandler = fn => (req, res, next) => {
   Promise
     .resolve(fn(req, res, next))
     .catch((err) => {
@@ -29,15 +29,12 @@ module.exports = (app) => {
 
   apiV1.route('/someroute')
     .get(
-      auth.authorize('audience'),
-      validateQuery({
-        startDate: Joi.date().iso().required(),
-        endDate: Joi.date().iso().required(),
-        name: Joi.string(),
-        arr: Joi.array().items(Joi.string()),
+      //auth.authorize,
+      validate('query', {
+        foobar: Joi.string(),
         size: Joi.number().positive().default(1000).max(10000),
       }),
-      asyncMiddleware(fooController.show_all),
+      errorHandler(fooController.show_all)
     );
 
   // Swagger File
