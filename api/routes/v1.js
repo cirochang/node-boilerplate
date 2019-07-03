@@ -29,12 +29,12 @@ module.exports = (app) => {
 
   apiV1.route('/someroute')
     .get(
-      //auth.authorize,
+      auth.authorize,
       validate('query', {
         foobar: Joi.string(),
         size: Joi.number().positive().default(1000).max(10000),
       }),
-      errorHandler(fooController.show_all)
+      errorHandler(fooController.show_all),
     );
 
   // Swagger File
