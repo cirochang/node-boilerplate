@@ -22,7 +22,7 @@ const transportDailyRotateFile = new transports.DailyRotateFile({
 const myTransports = [transportConsole];
 if (process.env.NODE_ENV !== 'test') myTransports.push(transportDailyRotateFile);
 
-const timestampFormatHHMMSSmm = timestamp => timestamp.split('T')[1].split('Z')[0];
+const timestampFormatHHMMSSmm = (timestamp) => timestamp.split('T')[1].split('Z')[0];
 
 const myFormat = format.combine(
   format.timestamp(),
